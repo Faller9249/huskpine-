@@ -119,8 +119,9 @@ mod test {
 
     #[test]
     fn test_filename_license_string() {
-        assert!(get_custom_server_from_string("rustdesk.exe").is_err());
-        assert!(get_custom_server_from_string("rustdesk").is_err());
+        // BRAZPINE: fallback now returns hardcoded server instead of error
+        assert!(get_custom_server_from_string("rustdesk.exe").is_ok());
+        assert!(get_custom_server_from_string("rustdesk").is_ok());
         assert_eq!(
             get_custom_server_from_string("rustdesk-host=server.example.net.exe").unwrap(),
             CustomServer {
