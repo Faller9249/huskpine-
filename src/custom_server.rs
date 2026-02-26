@@ -104,7 +104,13 @@ pub fn get_custom_server_from_string(s: &str) -> ResultType<CustomServer> {
             }
         }
     }
-    bail!("Failed to parse");
+    // BRAZPINE: hardcoded server config — fallback when exe name has no config
+    Ok(CustomServer {
+        host: "rd.brazpine.com:21116".to_owned(),
+        key: "1kmTq4tcB8de0vvAX87Af0ycaEDtRTelVEDGZQ85vkc=".to_owned(),
+        relay: "rd.brazpine.com:21117".to_owned(),
+        api: String::default(),
+    })
 }
 
 #[cfg(test)]
